@@ -26,12 +26,16 @@ public abstract class LineRadarRenderer extends LineScatterCandleRadarRenderer {
      * @param drawable
      */
     protected void drawFilledPath(Canvas c, Path filledPath, Drawable drawable) {
+        drawFilledPath(c,filledPath,drawable,1.0f,0);
+    }
+    protected void drawFilledPath(Canvas c, Path filledPath, Drawable drawable, float scaleX, float offsetX) {
 
         if (clipPathSupported()) {
 
             int save = c.save();
             c.clipPath(filledPath);
-
+            c.translate(offsetX, 0.0f);
+            c.scale(scaleX, 1.0f, mViewPortHandler.contentLeft(), mViewPortHandler.contentBottom());
             drawable.setBounds((int) mViewPortHandler.contentLeft(),
                     (int) mViewPortHandler.contentTop(),
                     (int) mViewPortHandler.contentRight(),

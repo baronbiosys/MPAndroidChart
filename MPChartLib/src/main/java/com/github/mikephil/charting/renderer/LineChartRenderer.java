@@ -471,8 +471,7 @@ public class LineChartRenderer extends LineRadarRenderer {
 
                 final Drawable drawable = dataSet.getFillDrawable();
                 if (drawable != null) {
-
-                    drawFilledPath(c, filled, drawable);
+                    drawFilledPath(c, filled, drawable, mViewPortHandler.getScaleX(), mViewPortHandler.getTransX());
                 } else {
 
                     drawFilledPath(c, filled, dataSet.getFillColor(), dataSet.getFillAlpha());
